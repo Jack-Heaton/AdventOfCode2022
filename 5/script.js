@@ -49,7 +49,7 @@ const moveList = moves.split("\n").map((m) =>
 
 const cargoMap2 = JSON.parse(JSON.stringify(cargoMap));
 
-//Part 1
+//Part 1 --- one crate at a time
 for (const move of moveList) {
   const [cratesToMove, sourceStack, destStack] = move;
 
@@ -63,7 +63,7 @@ for (const move of moveList) {
 
 outputSolution({ cargoMap });
 
-//Part 2
+//Part 2 --- move entire stacks of crates
 
 for (const move of moveList) {
   const [cratesToMove, sourceStack, destStack] = move;
