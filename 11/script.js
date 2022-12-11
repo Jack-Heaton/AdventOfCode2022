@@ -4,7 +4,7 @@ const real = fs.readFileSync(`input.txt`, "utf8");
 
 let input;
 
-input = input || sample;
+//input = input || sample;
 input = input || real;
 
 function getInitialMonkeys() {
@@ -43,7 +43,7 @@ function getInitialMonkeys() {
 function runRounds({ roundCount, monkeys, relax = true }) {
   let round = 0;
 
-  // const commonMultiple = monkeys.reduce((c, m) => c * m.test, 1n);
+  const commonMultiple = monkeys.reduce((c, m) => c * m.test, 1n);
 
   while (round < roundCount) {
     //Loop through monkeys
@@ -58,8 +58,8 @@ function runRounds({ roundCount, monkeys, relax = true }) {
 
         if (relax) obj = obj / 3n;
 
-        //Try to reduce number?
-        // if (obj % commonMultiple === 0n) obj = obj / commonMultiple;
+        //Reduce number
+        obj = obj % commonMultiple;
 
         //Test object value
         const test = obj % m.test === 0n;
@@ -103,7 +103,7 @@ runRounds({
 });
 
 runRounds({
-  roundCount: 20,
+  roundCount: 10000,
   monkeys: getInitialMonkeys(),
   relax: false,
 });
