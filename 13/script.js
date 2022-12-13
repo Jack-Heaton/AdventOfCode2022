@@ -4,8 +4,11 @@ const real = fs.readFileSync(`input.txt`, "utf8");
 
 let input;
 
-input = input || sample;
-//input = input || real;
+let current;
+let end;
+
+//input = input || sample;
+input = input || real;
 
 const map = {};
 
@@ -31,12 +34,6 @@ function evaluateItems(right, left, log, depth = 0) {
   left = Array.isArray(right) && !Array.isArray(left) ? [left] : left;
 
   if (log) console.log("left over", right, left);
-
-  if (!right.length && left.length) {
-    return "correct";
-  } else if (!left.length && right.length) {
-    return "incorrect";
-  }
 
   while (right.length && left.length) {
     if (log) console.log("starting", right, left);
@@ -65,12 +62,12 @@ function evaluateItems(right, left, log, depth = 0) {
     }
 
     if (log) console.log("left over", right, left);
+  }
 
-    if (!right.length && left.length) {
-      return "correct";
-    } else if (!left.length && right.length) {
-      return "incorrect";
-    }
+  if (!right.length && left.length) {
+    return "correct";
+  } else if (!left.length && right.length) {
+    return "incorrect";
   }
 }
 
