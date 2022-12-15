@@ -19,8 +19,6 @@ function prepInput(inputSource) {
 
     const d = Math.abs(bx - x) + Math.abs(by - y);
 
-    // console.log(x, y, sy, sx, d);
-
     if (!map[y]) map[y] = {};
     if (!map[by]) map[by] = {};
 
@@ -91,18 +89,6 @@ function countCoverage(target, inputSource, limit) {
     }
   });
 
-  //count unoccupied
-
-  // let unoccupied = 0;
-
-  // for (const k in map[target]) {
-  //   const space = map[target][k];
-
-  //   if (space.coveredby && !space.sensor && !space.beacon) {
-  //     unoccupied++;
-  //   }
-  // }
-
   if (limit) {
     if (unoccupied + scanned < limit) {
       let i = 0;
@@ -120,8 +106,8 @@ function countCoverage(target, inputSource, limit) {
 
 input = undefined;
 console.log(countCoverage(10, sample));
-//input = undefined;
-//console.log(countCoverage(2000000, real));
+input = undefined;
+console.log(countCoverage(2000000, real));
 
 input = undefined;
 
@@ -150,18 +136,3 @@ while (i < 4000000) {
 
   i++;
 }
-
-// let output = "";
-
-// console.log(map);
-
-// for (const r of map) {
-//   if (r) {
-//     for (const c of r) {
-//       output += !c ? " " : c;
-//     }
-//   }
-//   output += "\n";
-// }
-
-// console.log(output);
